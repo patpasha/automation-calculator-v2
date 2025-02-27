@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Calculateur d'Automatisation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ajout de Chart.js pour les visualisations graphiques -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Mono', 'monospace'],
+                    },
+                    colors: {
+                        zen: {
+                            bg: '#f5f5f7',
+                            primary: '#6366f1',
+                            secondary: '#8b5cf6',
+                            accent: '#ec4899',
+                            dark: '#1e293b',
+                        }
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans antialiased">
+    <div class="container mx-auto p-4 max-w-2xl">
+        <header class="mb-6 flex justify-between items-center">
+            <h1 class="text-xl font-bold gradient-text" id="appTitle" data-i18n="title">Calculateur d'Automatisation</h1>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center">
+                    <input type="checkbox" id="darkModeToggle" class="hidden">
+                    <label for="darkModeToggle" class="cursor-pointer flex items-center">
+                        <div class="relative w-10 h-5 bg-gray-300 rounded-full transition-colors duration-300 ease-in-out dark:bg-gray-600">
+                            <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform duration-300 ease-in-out transform dark:translate-x-5"></div>
+                        </div>
+                        <span class="ml-2 text-sm" id="darkModeLabel" data-i18n="darkMode">Mode sombre</span>
+                    </label>
+                </div>
+                
+                <!-- Language Switch -->
+                <div class="flex items-center">
+                    <select id="languageSwitch" class="form-select text-sm py-1 px-2">
+                        <option value="fr" data-i18n="french">Français</option>
+                        <option value="en" data-i18n="english">English</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="gradient-border p-4 mb-6">
+                <form id="calculatorForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Task Time -->
+                        <div class="input-group">
+                            <label for="taskTimeMinutes" class="form-label" id="taskTimeLabel" data-i18n="taskTimeLabel">Temps par tâche manuelle</label>
+                            <div class="flex space-x-2">
+                                <div>
+                                    <input type="number" id="taskTimeMinutes" class="form-input" min="0" placeholder="0" required>
+                                    <div class="text-xs text-gray-500 mt-1" id="minutesLabel" data-i18n="minutesUnit">minutes</div>
+                                </div>
+                                <div>
+                                    <input type="number" id="taskTimeSeconds" class="form-input" min="0" max="59" placeholder="0">
+                                    <div class="text-xs text-gray-500 mt-1" id="secondsLabel" data-i18n="secondsUnit">secondes</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="taskTimeDescription" data-i18n="taskTimeDescription">Le temps moyen nécessaire pour effectuer la tâche une seule fois :</p>
+                        </div>
+
+                        <!-- Task Frequency -->
+                        <div class="input-group">
+                            <label for="frequency" class="form-label" id="frequencyLabel" data-i18n="frequencyLabel">Fréquence d'exécution</label>
+                            <div class="flex space-x-2">
+                                <div class="flex-1">
+                                    <input type="number" id="frequency" class="form-input" min="1" placeholder="10" required>
+                                </div>
+                                <div class="flex-1">
+                                    <select id="frequencyUnit" class="form-select">
+                                        <option value="day" id="perDayOption" data-i18n="perDay">par jour</option>
+                                        <option value="week" id="perWeekOption" data-i18n="perWeek">par semaine</option>
+                                        <option value="month" id="perMonthOption" data-i18n="perMonth">par mois</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="frequencyDescription" data-i18n="frequencyDescription">Combien de fois effectuez-vous cette tâche :</p>
+                        </div>
+
+                        <!-- Automation Time -->
+                        <div class="input-group">
+                            <label for="automationTimeHours" class="form-label" id="automationTimeLabel" data-i18n="automationTimeLabel">Temps d'automatisation</label>
+                            <div class="flex space-x-2">
+                                <div>
+                                    <input type="number" id="automationTimeHours" class="form-input" min="0" placeholder="0" required>
+                                    <div class="text-xs text-gray-500 mt-1" id="hoursLabel" data-i18n="hoursUnit">heures</div>
+                                </div>
+                                <div>
+                                    <input type="number" id="automationTimeMinutes" class="form-input" min="0" max="59" placeholder="0">
+                                    <div class="text-xs text-gray-500 mt-1" id="minutesLabel2" data-i18n="minutesUnit">minutes</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="automationTimeDescription" data-i18n="automationTimeDescription">Le temps nécessaire pour automatiser cette tâche :</p>
+                        </div>
+
+                        <!-- Hourly Rate -->
+                        <div class="input-group">
+                            <label for="hourlyRate" class="form-label" id="hourlyRateLabel" data-i18n="hourlyRateLabel">Taux horaire</label>
+                            <input type="number" id="hourlyRate" class="form-input" min="0" placeholder="25" required>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="hourlyRateDescription" data-i18n="hourlyRateDescription">Votre taux horaire pour calculer les économies monétaires :</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between mt-4 space-x-2">
+                        <button type="button" id="calculateBtn" class="btn-primary py-2 px-4" data-i18n="calculateButton">Calculer</button>
+                        <button type="button" id="resetBtn" class="btn-secondary py-2 px-4" data-i18n="resetButton">Réinitialiser</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="hidden">
+                <div class="gradient-border p-4 mb-6">
+                    <h2 class="text-xl font-medium mb-4" id="resultsTitle" data-i18n="resultTitle">Résultat</h2>
+                    <!-- Recommendation Banner -->
+                    <div id="recommendationBanner" class="mb-4 p-3 rounded-lg text-center text-white font-bold text-xl shadow-lg transform transition-transform duration-300 hover:scale-105"></div>                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <!-- Time Savings -->
+                        <div>
+                            <h3 class="text-lg font-medium" id="timeSavingsLabel" data-i18n="timeSavingsLabel">Économie de temps</h3>
+                            <div class="ml-2">
+                                <div class="flex justify-between">
+                                    <span id="dailySavingsLabel" data-i18n="dailySavingsLabel">Par jour :</span>
+                                    <span id="dailyTimeSaved">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span id="monthlySavingsLabel" data-i18n="monthlySavingsLabel">Par mois :</span>
+                                    <span id="monthlyTimeSaved">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span id="yearlySavingsLabel" data-i18n="yearlySavingsLabel">Par an :</span>
+                                    <span id="yearlyTimeSaved">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Money Savings -->
+                        <div>
+                            <h3 class="text-lg font-medium" id="moneySavingsLabel" data-i18n="moneySavingsLabel">Économie monétaire</h3>
+                            <div class="ml-2">
+                                <div class="flex justify-between">
+                                    <span id="dailySavingsMoneyLabel" data-i18n="dailySavingsMoneyLabel">Par jour :</span>
+                                    <span id="dailyMoneySaved" class="money-savings">$0.00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span id="monthlySavingsLabel" data-i18n="monthlySavingsLabel">Par mois :</span>
+                                    <span id="monthlyMoneySaved" class="money-savings">$0.00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span id="yearlySavingsMoneyLabel" data-i18n="yearlySavingsMoneyLabel">Par an :</span>
+                                    <span id="yearlyMoneySaved" class="money-savings">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between mb-2">
+                            <span id="breakEvenLabel" data-i18n="breakEvenLabel">Point de rentabilité :</span>
+                            <span id="breakEvenDate">0 jours</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span id="roiLabel" data-i18n="roiLabel">Retour sur investissement (1 an) :</span>
+                            <span id="roi">0%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart Container -->
+                    <div class="mt-6">
+                        <h3 class="text-lg font-medium mb-2" id="chartTitle" data-i18n="chartTitle">Visualisation des économies</h3>
+                        <div class="h-64">
+                            <canvas id="savingsChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end mt-4 space-x-2">
+                        <button type="button" id="saveCalculation" class="btn-secondary py-1 px-3 text-sm" data-i18n="saveButton">Sauvegarder</button>
+                        <button type="button" id="loadCalculation" class="btn-secondary py-1 px-3 text-sm" data-i18n="loadButton">Charger</button>
+                        <button type="button" id="shareCalculation" class="btn-secondary py-1 px-3 text-sm" data-i18n="shareButton">Partager</button>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-700" id="resultText"></div>
+            </div>
+        </main>
+
+        <footer class="mt-8 text-center text-xs text-gray-500">
+            <p data-i18n="copyright">&copy; 2025 Calculateur d'Automatisation</p>
+            <p class="mt-1" data-i18n="footerText">Conçu pour vous aider à prendre des décisions éclairées sur l'automatisation de vos tâches.</p>
+        </footer>
+    </div>
+</body>
+</html>
