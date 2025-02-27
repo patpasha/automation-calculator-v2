@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateBtn.addEventListener('click', calculateROI);
     resetBtn.addEventListener('click', resetForm);
     languageSwitch.addEventListener('change', toggleLanguage);
-    darkModeToggle.addEventListener('change', toggleDarkMode);
+    darkModeToggle.addEventListener('click', toggleDarkMode);
     saveButton.addEventListener('click', saveCalculation);
     shareButton.addEventListener('click', shareCalculation);
     loadButton.addEventListener('click', loadCalculation);
@@ -556,11 +556,7 @@ function initializeDarkMode() {
     // Appliquer le thème selon les préférences
     if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
         document.documentElement.classList.add('dark');
-        darkModeToggle.checked = true;
     }
-    
-    // Écouter les changements du toggle
-    darkModeToggle.addEventListener('change', toggleDarkMode);
 }
 
 // Fonction pour basculer le mode sombre/clair
