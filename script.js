@@ -548,6 +548,7 @@ function resetForm() {
 
 // Fonction pour initialiser le mode sombre
 function initializeDarkMode() {
+    console.log("Initialisation du mode sombre");
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
     // Vérifier si l'utilisateur a déjà une préférence enregistrée
@@ -561,21 +562,18 @@ function initializeDarkMode() {
 
 // Fonction pour basculer le mode sombre/clair
 function toggleDarkMode() {
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    
-    if (isDarkMode) {
+    console.log("Basculement du mode sombre/clair");
+    if (document.documentElement.classList.contains('dark')) {
+        // Passer au mode clair
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
+        console.log("Mode clair activé");
     } else {
+        // Passer au mode sombre
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
+        console.log("Mode sombre activé");
     }
-    
-    // Ajouter une animation de transition
-    darkModeToggle.classList.add('animate-pulse');
-    setTimeout(() => {
-        darkModeToggle.classList.remove('animate-pulse');
-    }, 500);
 }
 
 // Fonction pour sauvegarder le calcul actuel

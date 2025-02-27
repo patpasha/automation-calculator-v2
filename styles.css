@@ -15,6 +15,10 @@
     --zen-accent-light: #4c51bf;
 }
 
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 html, body {
     font-family: 'DM Mono', monospace;
     color: var(--zen-dark);
@@ -24,10 +28,9 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-y: auto;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.dark body {
+html.dark, html.dark body {
     color: var(--zen-dark);
     background-color: var(--zen-light);
 }
