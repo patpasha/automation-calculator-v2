@@ -5,14 +5,18 @@
     --zen-accent-light: #7f9cf5;
     --zen-error: #e53e3e;
     --zen-success: #38a169;
+    --zen-text-dark: #2d3748;
+    --zen-text-light: #ffffff;
 }
 
 /* Mode sombre */
 :root.dark {
-    --zen-dark: #f7fafc;
-    --zen-light: #1a202c;
+    --zen-dark: #1a202c;
+    --zen-light: #f7fafc;
     --zen-accent: #7f9cf5;
     --zen-accent-light: #4c51bf;
+    --zen-text-dark: #1a202c;
+    --zen-text-light: #ffffff;
 }
 
 html {
@@ -21,7 +25,7 @@ html {
 
 html, body {
     font-family: 'DM Mono', monospace;
-    color: var(--zen-dark);
+    color: var(--zen-text-dark);
     background-color: var(--zen-light);
     line-height: 1.5;
     height: 100%;
@@ -31,8 +35,8 @@ html, body {
 }
 
 html.dark, html.dark body {
-    color: var(--zen-dark);
-    background-color: var(--zen-light);
+    color: var(--zen-text-light);
+    background-color: var(--zen-dark);
 }
 
 .gradient-text {
@@ -57,6 +61,7 @@ html.dark, html.dark body {
     background: white;
     background-clip: padding-box;
     border: 1px solid transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .dark .gradient-border {
@@ -106,7 +111,7 @@ html.dark, html.dark body {
 .dark .form-input, .dark .form-select {
     background-color: #2d3748;
     border-color: #4a5568;
-    color: #f7fafc;
+    color: var(--zen-text-light);
 }
 
 .form-input:focus, .form-select:focus {
@@ -124,18 +129,20 @@ html.dark, html.dark body {
     margin-bottom: 0.25rem;
     font-size: 0.875rem;
     font-weight: 500;
+    color: var(--zen-text-dark);
 }
 
 .dark .form-label {
-    color: #f7fafc;
+    color: var(--zen-text-light);
 }
 
 .form-description {
     margin-bottom: 0.25rem;
+    color: var(--zen-text-dark);
 }
 
 .dark .form-description {
-    color: #a0aec0 !important;
+    color: var(--zen-text-light);
 }
 
 .input-group {
@@ -174,7 +181,7 @@ html.dark, html.dark body {
 
 .dark .btn-secondary {
     background: #4a5568;
-    color: #e2e8f0;
+    color: var(--zen-text-light);
 }
 
 .btn-secondary:hover {
@@ -206,16 +213,112 @@ button:focus, a:focus, input:focus, select:focus {
 
 /* Contraste amélioré pour le mode sombre */
 .dark text, .dark .text-gray-500 {
-    color: #a0aec0 !important;
+    color: var(--zen-text-light);
 }
 
 .dark .text-gray-700 {
-    color: #e2e8f0 !important;
+    color: var(--zen-text-light);
+}
+
+/* Contraste amélioré pour le mode clair */
+.text-gray-700 {
+    color: var(--zen-text-dark);
 }
 
 /* Styles pour le graphique en mode sombre */
 .dark #savingsChart {
     filter: invert(0.85) hue-rotate(180deg);
+}
+
+/* Styles pour la section des résultats */
+#results {
+    color: var(--zen-text-dark);
+}
+
+#results h2,
+#results h3,
+#results .flex span,
+#results #breakEvenDate,
+#results #roi,
+#results #dailyTimeSaved,
+#results #monthlyTimeSaved,
+#results #yearlyTimeSaved,
+#results #dailyMoneySaved,
+#results #monthlyMoneySaved,
+#results #yearlyMoneySaved {
+    color: var(--zen-text-dark);
+}
+
+#recommendationBanner {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.bg-gradient-to-r.from-green-500.to-teal-500,
+.bg-gradient-to-r.from-red-500.to-orange-500,
+.bg-gradient-to-r.from-green-600.to-emerald-500,
+.bg-gradient-to-r.from-amber-600.to-red-500 {
+    color: #ffffff !important;
+}
+
+.bg-gradient-to-r.from-green-600.to-emerald-500 {
+    background: linear-gradient(90deg, #059669, #10b981);
+    box-shadow: 0 4px 6px rgba(5, 150, 105, 0.25);
+    animation: pulse-green 2s infinite;
+}
+
+.bg-gradient-to-r.from-amber-600.to-red-500 {
+    background: linear-gradient(90deg, #d97706, #ef4444);
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.25);
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 4px 6px rgba(5, 150, 105, 0.25);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.5);
+    }
+    100% {
+        box-shadow: 0 4px 6px rgba(5, 150, 105, 0.25);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 4px 6px rgba(239, 68, 68, 0.25);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+    }
+    100% {
+        box-shadow: 0 4px 6px rgba(239, 68, 68, 0.25);
+    }
+}
+
+.dark #results {
+    color: var(--zen-text-light);
+}
+
+.dark #results h2,
+.dark #results h3,
+.dark #results .flex span,
+.dark #results #breakEvenDate,
+.dark #results #roi,
+.dark #results #dailyTimeSaved,
+.dark #results #monthlyTimeSaved,
+.dark #results #yearlyTimeSaved,
+.dark #results #dailyMoneySaved,
+.dark #results #monthlyMoneySaved,
+.dark #results #yearlyMoneySaved {
+    color: var(--zen-text-light);
+}
+
+.dark #recommendationBanner {
+    color: var(--zen-text-light) !important;
 }
 
 /* Styles pour la bannière de recommandation */

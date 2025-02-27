@@ -142,7 +142,7 @@
                 <div class="gradient-border p-4 mb-6">
                     <h2 class="text-xl font-medium mb-4" id="resultsTitle" data-i18n="resultTitle">Résultat</h2>
                     <!-- Recommendation Banner -->
-                    <div id="recommendationBanner" class="mb-4 p-3 rounded-lg text-center text-white font-bold text-xl shadow-lg transform transition-transform duration-300 hover:scale-105"></div>                    
+                    <div id="recommendationBanner" class="mb-4 p-3 rounded-lg text-center text-white font-bold text-xl shadow-lg transform transition-transform duration-300 hover:scale-105 bg-green-500"></div>                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <!-- Time Savings -->
                         <div>
@@ -211,7 +211,22 @@
                 </div>
                 
                 <div class="text-sm text-gray-700" id="resultText"></div>
+                
+                <!-- Note d'avertissement -->
+                <div class="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-800 rounded-md">
+                    <p class="text-sm text-yellow-800 dark:text-yellow-200" data-i18n="disclaimerNote">
+                        Note : Ces résultats sont fournis à titre indicatif et constituent une estimation approximative. Plusieurs facteurs peuvent influencer les résultats. Ce calculateur ne remplace en aucun cas un diagnostic ou un audit professionnel.
+                    </p>
+                </div>
+                
+                <!-- CTA Section -->
+                <div class="mt-6 p-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white text-center">
+                    <h3 class="text-lg font-medium mb-2" data-i18n="ctaTitle">Besoin d'un audit professionnel ?</h3>
+                    <p class="mb-4" data-i18n="ctaText">Contactez-moi pour une analyse approfondie de vos processus et découvrez comment l'automatisation peut transformer votre productivité.</p>
+                    <a href="https://cal.com/rain-trigger/30min" target="_blank" class="inline-block bg-white text-purple-600 font-bold py-2 px-6 rounded-full hover:bg-gray-100 transition-colors duration-300" data-i18n="ctaButton">Prendre rendez-vous</a>
+                </div>
             </div>
+            
         </main>
 
         <footer class="mt-8 text-center text-xs text-gray-500">
