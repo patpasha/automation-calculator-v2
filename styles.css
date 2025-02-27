@@ -254,6 +254,48 @@ button:focus, a:focus, input:focus, select:focus {
     }
 }
 
+/* Styles pour le bouton de thème */
+.theme-toggle-btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle-btn:active {
+    transform: translateY(0);
+}
+
+.theme-toggle-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.theme-toggle-btn:hover::after {
+    opacity: 1;
+}
+
+.dark .theme-toggle-btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark .theme-toggle-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
     .container {

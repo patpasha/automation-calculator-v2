@@ -45,6 +45,7 @@ const translations = {
         yearlySavingsMoneyLabel: "Par an :",
         currencyUnit: "€",
         darkMode: "Mode sombre",
+        lightMode: "Mode clair",
         saveCalculation: "Sauvegarder",
         shareCalculation: "Partager",
         loadCalculation: "Charger",
@@ -68,7 +69,7 @@ const translations = {
         saveButton: "Sauvegarder",
         loadButton: "Charger",
         shareButton: "Partager",
-        copyright: "© 2025 Calculateur d'Automatisation",
+        copyright: " 2025 Calculateur d'Automatisation",
         footerText: "Conçu pour vous aider à prendre des décisions éclairées sur l'automatisation de vos tâches.",
         appTitle: "Calculateur d'Automatisation"
     },
@@ -109,11 +110,12 @@ const translations = {
         frequencyInput: "10",
         automationTimeInput: "2",
         hourlyRateInput: "$25",
-        moneySavingsLabel: "Monetary savings",
+        moneySavingsLabel: "Money Savings",
         monthlySavingsLabel: "Per month:",
         yearlySavingsMoneyLabel: "Per year:",
         currencyUnit: "$",
         darkMode: "Dark Mode",
+        lightMode: "Light Mode",
         saveCalculation: "Save",
         shareCalculation: "Share",
         loadCalculation: "Load",
@@ -137,7 +139,7 @@ const translations = {
         saveButton: "Save",
         loadButton: "Load",
         shareButton: "Share",
-        copyright: "© 2025 Automation Calculator",
+        copyright: " 2025 Automation Calculator",
         footerText: "Designed to help you make informed decisions about task automation.",
         appTitle: "Automation Calculator"
     }
@@ -558,26 +560,26 @@ function initializeDarkMode() {
     }
     
     // Écouter les changements du toggle
-    darkModeToggle.addEventListener('change', function() {
-        if (this.checked) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+    darkModeToggle.addEventListener('change', toggleDarkMode);
 }
 
 // Fonction pour basculer le mode sombre/clair
 function toggleDarkMode() {
-    if (darkModeToggle.checked) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    
+    if (isDarkMode) {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
+    } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
     }
+    
+    // Ajouter une animation de transition
+    darkModeToggle.classList.add('animate-pulse');
+    setTimeout(() => {
+        darkModeToggle.classList.remove('animate-pulse');
+    }, 500);
 }
 
 // Fonction pour sauvegarder le calcul actuel
