@@ -6,7 +6,8 @@
     <title data-i18n="title">Calculateur d'Automatisation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Ajout de Chart.js pour les visualisations graphiques -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
     <script>
         tailwind.config = {
             theme: {
@@ -40,7 +41,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="font-sans antialiased">
-    <div class="container mx-auto p-4 max-w-2xl">
+    <div class="container mx-auto p-4 max-w-3xl">
         <header class="mb-6 flex justify-between items-center">
             <h1 class="text-xl font-bold gradient-text" id="appTitle" data-i18n="title">Calculateur d'Automatisation</h1>
             <div class="flex items-center space-x-4">
@@ -69,12 +70,19 @@
         </header>
 
         <main>
+            <!-- Introduction Section -->
             <div class="gradient-border p-4 mb-6">
-                <form id="calculatorForm">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <h2 class="text-lg font-medium mb-2" data-i18n="introTitle">Découvrez si l'automatisation est rentable pour vous</h2>
+                <p class="text-base mb-4" data-i18n="introText">Ce calculateur vous aide à déterminer si l'automatisation d'une tâche répétitive en vaut la peine. Remplissez simplement les informations ci-dessous pour obtenir une estimation du temps et de l'argent que vous pourriez économiser.</p>
+            </div>
+            
+            <!-- Calculator Form -->
+            <div class="gradient-border p-4 mb-6">
+                <form id="calculatorForm" class="space-y-6">
+                    <div class="space-y-6">
                         <!-- Task Time -->
                         <div class="input-group">
-                            <label for="taskTimeMinutes" class="form-label" id="taskTimeLabel" data-i18n="taskTimeLabel">Temps par tâche manuelle</label>
+                            <label for="taskTimeMinutes" class="form-label" id="taskTimeLabel" data-i18n="taskTimeLabel">Combien de temps dure votre tâche ?</label>
                             <div class="flex space-x-2">
                                 <div>
                                     <input type="number" id="taskTimeMinutes" class="form-input" min="0" placeholder="0" required>
@@ -85,54 +93,53 @@
                                     <div class="text-xs text-gray-500 mt-1" id="secondsLabel" data-i18n="secondsUnit">secondes</div>
                                 </div>
                             </div>
-                            <p class="text-xs text-gray-500 mt-1 form-description" id="taskTimeDescription" data-i18n="taskTimeDescription">Le temps moyen nécessaire pour effectuer la tâche une seule fois :</p>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="taskTimeDescription" data-i18n="taskTimeDescription">Combien de temps vous faut-il pour effectuer cette tâche une seule fois ?</p>
                         </div>
 
                         <!-- Task Frequency -->
                         <div class="input-group">
-                            <label for="frequency" class="form-label" id="frequencyLabel" data-i18n="frequencyLabel">Fréquence d'exécution</label>
+                            <label for="frequency" class="form-label" id="frequencyLabel" data-i18n="frequencyLabel">À quelle fréquence faites-vous cette tâche ?</label>
                             <div class="flex space-x-2">
-                                <div class="flex-1">
-                                    <input type="number" id="frequency" class="form-input" min="1" placeholder="10" required>
-                                </div>
-                                <div class="flex-1">
-                                    <select id="frequencyUnit" class="form-select">
-                                        <option value="day" id="perDayOption" data-i18n="perDay">par jour</option>
-                                        <option value="week" id="perWeekOption" data-i18n="perWeek">par semaine</option>
-                                        <option value="month" id="perMonthOption" data-i18n="perMonth">par mois</option>
-                                    </select>
-                                </div>
+                                <input type="number" id="frequency" class="form-input" min="1" placeholder="10" required>
+                                <select id="frequencyUnit" class="form-select">
+                                    <option value="day" id="perDayOption" data-i18n="perDay">par jour</option>
+                                    <option value="week" id="perWeekOption" data-i18n="perWeek">par semaine</option>
+                                    <option value="month" id="perMonthOption" data-i18n="perMonth">par mois</option>
+                                </select>
                             </div>
-                            <p class="text-xs text-gray-500 mt-1 form-description" id="frequencyDescription" data-i18n="frequencyDescription">Combien de fois effectuez-vous cette tâche :</p>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="frequencyDescription" data-i18n="frequencyDescription">Combien de fois effectuez-vous cette tâche ?</p>
                         </div>
 
-                        <!-- Automation Time -->
+                        <!-- Task Complexity -->
                         <div class="input-group">
-                            <label for="automationTimeHours" class="form-label" id="automationTimeLabel" data-i18n="automationTimeLabel">Temps d'automatisation</label>
-                            <div class="flex space-x-2">
-                                <div>
-                                    <input type="number" id="automationTimeHours" class="form-input" min="0" placeholder="0" required>
-                                    <div class="text-xs text-gray-500 mt-1" id="hoursLabel" data-i18n="hoursUnit">heures</div>
-                                </div>
-                                <div>
-                                    <input type="number" id="automationTimeMinutes" class="form-input" min="0" max="59" placeholder="0">
-                                    <div class="text-xs text-gray-500 mt-1" id="minutesLabel2" data-i18n="minutesUnit">minutes</div>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-500 mt-1 form-description" id="automationTimeDescription" data-i18n="automationTimeDescription">Le temps nécessaire pour automatiser cette tâche :</p>
+                            <label for="taskComplexity" class="form-label" id="taskComplexityLabel" data-i18n="taskComplexityLabel">Quelle est la complexité de votre tâche ?</label>
+                            <select id="taskComplexity" class="form-select">
+                                <option value="simple" data-i18n="complexitySimple">Simple (ex: copier-coller des données)</option>
+                                <option value="medium" data-i18n="complexityMedium">Moyenne (ex: extraire et formater des données)</option>
+                                <option value="complex" data-i18n="complexityComplex">Complexe (ex: analyse et prise de décision)</option>
+                            </select>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="taskComplexityDescription" data-i18n="taskComplexityDescription">Choisissez l'option qui correspond le mieux à votre tâche.</p>
+                            <input type="hidden" id="automationTimeHours" value="0">
+                            <input type="hidden" id="automationTimeMinutes" value="30">
                         </div>
 
-                        <!-- Hourly Rate -->
+                        <!-- Salary Range -->
                         <div class="input-group">
-                            <label for="hourlyRate" class="form-label" id="hourlyRateLabel" data-i18n="hourlyRateLabel">Taux horaire</label>
-                            <input type="number" id="hourlyRate" class="form-input" min="0" placeholder="25" required>
-                            <p class="text-xs text-gray-500 mt-1 form-description" id="hourlyRateDescription" data-i18n="hourlyRateDescription">Votre taux horaire pour calculer les économies monétaires :</p>
+                            <label for="salaryRange" class="form-label" id="salaryRangeLabel" data-i18n="salaryRangeLabel">Quelle est votre tranche de salaire ?</label>
+                            <select id="salaryRange" class="form-select">
+                                <option value="20" data-i18n="salaryRange1">Moins de 30k€ par an</option>
+                                <option value="30" data-i18n="salaryRange2">30k€ - 50k€ par an</option>
+                                <option value="40" data-i18n="salaryRange3">50k€ - 70k€ par an</option>
+                                <option value="60" data-i18n="salaryRange4">Plus de 70k€ par an</option>
+                            </select>
+                            <p class="text-xs text-gray-500 mt-1 form-description" id="salaryRangeDescription" data-i18n="salaryRangeDescription">Cette information nous aide à estimer la valeur de votre temps.</p>
+                            <input type="hidden" id="hourlyRate" value="25">
                         </div>
                     </div>
 
-                    <div class="flex justify-between mt-4 space-x-2">
-                        <button type="button" id="calculateBtn" class="btn-primary py-2 px-4" data-i18n="calculateButton">Calculer</button>
-                        <button type="button" id="resetBtn" class="btn-secondary py-2 px-4" data-i18n="resetButton">Réinitialiser</button>
+                    <div class="flex justify-between mt-6 space-x-4">
+                        <button type="button" id="calculateBtn" class="btn-primary py-3 px-6" data-i18n="calculateButton">Calculer</button>
+                        <button type="button" id="resetBtn" class="btn-secondary py-3 px-6" data-i18n="resetButton">Réinitialiser</button>
                     </div>
                 </form>
             </div>
@@ -162,17 +169,16 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <!-- Money Savings -->
                         <div>
-                            <h3 class="text-lg font-medium" id="moneySavingsLabel" data-i18n="moneySavingsLabel">Économie monétaire</h3>
+                            <h3 class="text-lg font-medium" id="moneySavingsLabel" data-i18n="moneySavingsLabel">Économie d'argent</h3>
                             <div class="ml-2">
                                 <div class="flex justify-between">
                                     <span id="dailySavingsMoneyLabel" data-i18n="dailySavingsMoneyLabel">Par jour :</span>
                                     <span id="dailyMoneySaved" class="money-savings">$0.00</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span id="monthlySavingsLabel" data-i18n="monthlySavingsLabel">Par mois :</span>
+                                    <span id="monthlySavingsMoneyLabel" data-i18n="monthlySavingsMoneyLabel">Par mois :</span>
                                     <span id="monthlyMoneySaved" class="money-savings">$0.00</span>
                                 </div>
                                 <div class="flex justify-between">
@@ -197,7 +203,7 @@
                     <!-- Chart Container -->
                     <div class="mt-6">
                         <h3 class="text-lg font-medium mb-2" id="chartTitle" data-i18n="chartTitle">Visualisation des économies</h3>
-                        <div class="h-64">
+                        <div class="h-80 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-inner">
                             <canvas id="savingsChart"></canvas>
                         </div>
                     </div>
@@ -220,10 +226,36 @@
                 </div>
                 
                 <!-- CTA Section -->
-                <div class="mt-6 p-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white text-center">
-                    <h3 class="text-lg font-medium mb-2" data-i18n="ctaTitle">Besoin d'un audit professionnel ?</h3>
-                    <p class="mb-4" data-i18n="ctaText">Contactez-moi pour une analyse approfondie de vos processus et découvrez comment l'automatisation peut transformer votre productivité.</p>
-                    <a href="https://cal.com/rain-trigger/30min" target="_blank" class="inline-block bg-white text-purple-600 font-bold py-2 px-6 rounded-full hover:bg-gray-100 transition-colors duration-300" data-i18n="ctaButton">Prendre rendez-vous</a>
+                <div class="mt-6 p-6 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white shadow-xl">
+                    <h3 class="text-xl font-bold mb-3" data-i18n="ctaTitle">Besoin d'aide pour automatiser vos tâches ?</h3>
+                    <p class="mb-4" data-i18n="ctaText">Je propose des services de conseil, de formation et de développement sur mesure pour vous aider à automatiser vos processus et gagner un temps précieux. Que vous soyez débutant ou que vous ayez des besoins spécifiques, je peux vous accompagner dans votre démarche d'automatisation.</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
+                        <a href="mailto:contact@example.com" class="btn-white py-2 px-4 text-center" data-i18n="ctaButtonConsult">Demander un conseil gratuit</a>
+                        <a href="#" class="btn-outline-white py-2 px-4 text-center" data-i18n="ctaButtonLearn">Découvrir nos formations</a>
+                    </div>
+                </div>
+                
+                <!-- Cal.com Integration -->
+                <div class="mt-6 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-3" data-i18n="calendarTitle">Prendre rendez-vous</h3>
+                    <p class="mb-4" data-i18n="calendarText">Réservez directement un créneau dans mon agenda pour discuter de vos besoins d'automatisation.</p>
+                    
+                    <div class="calendar-container">
+                        <!-- Cal inline embed code begins -->
+                        <div style="width:100%;height:800px;overflow:auto" id="my-cal-inline" class="border rounded-lg shadow-md"></div>
+                        <script type="text/javascript">
+                          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                        Cal("init", "30min", {origin:"https://cal.com"});
+
+                          Cal.ns["30min"]("inline", {
+                            elementOrSelector:"#my-cal-inline",
+                            config: {"layout":"month_view","theme":"auto", "hideEventTypeDetails":false},
+                            calLink: "rain-trigger/30min",
+                          });
+                        </script>
+                        <!-- Cal inline embed code ends -->
+                    </div>
+                    <p class="mt-4 text-sm text-gray-600 dark:text-gray-400" data-i18n="calendarNote">Note: Si vous ne trouvez pas de créneau qui vous convient, n'hésitez pas à me contacter directement.</p>
                 </div>
             </div>
             

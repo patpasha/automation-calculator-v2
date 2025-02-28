@@ -6,6 +6,8 @@ const translations = {
     fr: {
         title: "Calculateur d'Automatisation",
         description: "Cet outil vous aide à déterminer si l'automatisation d'une tâche vaut l'investissement en temps.",
+        introTitle: "Découvrez si l'automatisation est rentable pour vous",
+        introText: "Ce calculateur vous aide à déterminer si automatiser une tâche répétitive en vaut la peine, même si vous n'avez aucune connaissance en automatisation. Répondez simplement aux questions ci-dessous.",
         howItWorksTitle: "",
         howItWorksStep1: "",
         howItWorksStep2: "",
@@ -20,10 +22,10 @@ const translations = {
         service2: "",
         service3: "",
         service4: "",
-        taskTimeLabel: "Temps par tâche manuelle",
-        taskTimeDescription: "Le temps moyen nécessaire pour effectuer la tâche une seule fois :",
-        frequencyLabel: "Fréquence d'exécution",
-        frequencyDescription: "Combien de fois effectuez-vous cette tâche :",
+        taskTimeLabel: "Combien de temps dure votre tâche ?",
+        taskTimeDescription: "Combien de temps vous faut-il pour effectuer cette tâche une seule fois ?",
+        frequencyLabel: "À quelle fréquence faites-vous cette tâche ?",
+        frequencyDescription: "Combien de fois effectuez-vous cette tâche ?",
         perDay: "par jour",
         perWeek: "par semaine",
         perMonth: "par mois",
@@ -74,7 +76,7 @@ const translations = {
         withoutAutomation: "Sans automatisation",
         withAutomation: "Avec automatisation",
         breakEvenPoint: "Point de rentabilité",
-        months: "Mois",
+        months: "mois",
         cost: "Coût",
         timeSavingsLabel: "Économie de temps",
         dailySavingsMoneyLabel: "Par jour :",
@@ -86,13 +88,36 @@ const translations = {
         french: "Français",
         english: "English",
         disclaimerNote: "Note : Ces résultats sont fournis à titre indicatif et constituent une estimation approximative. Plusieurs facteurs peuvent influencer les résultats. Ce calculateur ne remplace en aucun cas un diagnostic ou un audit professionnel.",
-        ctaTitle: "Besoin d'un audit professionnel ?",
-        ctaText: "Contactez-moi pour une analyse approfondie de vos processus et découvrez comment l'automatisation peut transformer votre productivité.",
-        ctaButton: "Prendre rendez-vous"
+        ctaTitle: "Besoin d'aide pour automatiser vos tâches ?",
+        ctaText: "Je propose des services de conseil, de formation et de développement sur mesure pour vous aider à automatiser vos processus et gagner un temps précieux. Que vous soyez débutant ou que vous ayez des besoins spécifiques, je peux vous accompagner dans votre démarche d'automatisation.",
+        ctaButtonConsult: "Demander un conseil gratuit",
+        ctaButtonLearn: "Découvrir nos formations",
+        taskComplexityLabel: "Quelle est la complexité de votre tâche ?",
+        taskComplexityDescription: "Choisissez l'option qui correspond le mieux à votre tâche.",
+        complexitySimple: "Simple (ex: copier-coller des données)",
+        complexityMedium: "Moyenne (ex: extraire et formater des données)",
+        complexityComplex: "Complexe (ex: analyse et prise de décision)",
+        simpleExample: "Exemple: Copier-coller des données, remplir des formulaires simples, envoyer des emails standard.",
+        mediumExample: "Exemple: Extraire et formater des données de plusieurs sources, générer des rapports périodiques, automatiser des flux de travail basiques.",
+        complexExample: "Exemple: Traitement de données complexes avec logique conditionnelle, intégration entre plusieurs systèmes, automatisation de processus métier complets.",
+        salaryRangeLabel: "Quelle est votre tranche de salaire ?",
+        salaryRangeDescription: "Cette information nous aide à estimer la valeur de votre temps.",
+        salaryRange1: "Moins de 30k€ par an",
+        salaryRange2: "30k€ - 50k€ par an",
+        salaryRange3: "50k€ - 70k€ par an",
+        salaryRange4: "Plus de 70k€ par an",
+        initialInvestment: "Investissement initial",
+        cumulativeSavings: "Économies cumulées",
+        timeElapsed: "Temps écoulé",
+        hoursSaved: "Heures économisées",
+        calendarTitle: "Prendre rendez-vous",
+        calendarText: "Réservez directement un créneau dans mon agenda pour discuter de vos besoins d'automatisation.",
     },
     en: {
         title: "Automation Calculator",
         description: "This tool helps you determine if automating a task is worth the time investment.",
+        introTitle: "Find out if automation is profitable for you",
+        introText: "This calculator helps you determine if automating a repetitive task is worth it, even if you have no knowledge of automation. Simply answer the questions below.",
         howItWorksTitle: "",
         howItWorksStep1: "",
         howItWorksStep2: "",
@@ -107,10 +132,10 @@ const translations = {
         service2: "",
         service3: "",
         service4: "",
-        taskTimeLabel: "Time per manual task",
-        taskTimeDescription: "The average time needed to perform the task once:",
-        frequencyLabel: "Execution frequency",
-        frequencyDescription: "How often do you perform this task:",
+        taskTimeLabel: "How long does your task take?",
+        taskTimeDescription: "How much time does it take you to perform this task once?",
+        frequencyLabel: "How often do you perform this task?",
+        frequencyDescription: "How many times do you perform this task?",
         perDay: "per day",
         perWeek: "per week",
         perMonth: "per month",
@@ -161,7 +186,7 @@ const translations = {
         withoutAutomation: "Without automation",
         withAutomation: "With automation",
         breakEvenPoint: "Break-even point",
-        months: "Months",
+        months: "months",
         cost: "Cost",
         timeSavingsLabel: "Time savings",
         dailySavingsMoneyLabel: "Per day:",
@@ -173,16 +198,37 @@ const translations = {
         french: "Français",
         english: "English",
         disclaimerNote: "Note: These results are provided for informational purposes only and represent an approximate estimate. Several factors may influence the results. This calculator does not replace a professional diagnosis or audit in any way.",
-        ctaTitle: "Need a professional audit?",
-        ctaText: "Contact me for an in-depth analysis of your processes and discover how automation can transform your productivity.",
-        ctaButton: "Schedule a meeting"
+        ctaTitle: "Need help with automation?",
+        ctaText: "I offer custom consulting, training, and development services to help you automate your processes and save valuable time. Whether you're a beginner or have specific needs, I can assist you in your automation journey.",
+        ctaButtonConsult: "Request Free Advice",
+        ctaButtonLearn: "Discover Our Training Courses",
+        taskComplexityLabel: "What is the complexity of your task?",
+        taskComplexityDescription: "Choose the option that best matches your task.",
+        complexitySimple: "Simple (e.g., copy-paste data)",
+        complexityMedium: "Medium (e.g., extract and format data)",
+        complexityComplex: "Complex (e.g., analysis and decision making)",
+        simpleExample: "Example: Copy-pasting data, filling simple forms, sending standard emails.",
+        mediumExample: "Example: Extracting and formatting data from multiple sources, generating periodic reports, automating basic workflows.",
+        complexExample: "Example: Processing complex data with conditional logic, integrating between multiple systems, automating complete business processes.",
+        salaryRangeLabel: "What is your salary range?",
+        salaryRangeDescription: "This information helps us estimate the value of your time.",
+        salaryRange1: "Less than $30k per year",
+        salaryRange2: "$30k - $50k per year",
+        salaryRange3: "$50k - $70k per year",
+        salaryRange4: "More than $70k per year",
+        initialInvestment: "Initial investment",
+        cumulativeSavings: "Cumulative savings",
+        timeElapsed: "Time elapsed",
+        hoursSaved: "Hours saved",
+        calendarTitle: "Schedule an Appointment",
+        calendarText: "Book a slot directly in my calendar to discuss your automation needs.",
     }
 };
 
 // Fonction pour calculer le ROI
 function calculateROI() {
     // Vérifier que tous les champs sont remplis
-    if (!taskTimeMinutesInput.value || !frequencyInput.value || !automationTimeHoursInput.value || !hourlyRateInput.value) {
+    if (!taskTimeMinutesInput.value || !frequencyInput.value) {
         alert(translations[currentLanguage].fillAllFields);
         return;
     }
@@ -192,10 +238,44 @@ function calculateROI() {
     const taskTimeSeconds = parseInt(taskTimeSecondsInput.value) || 0;
     const frequency = parseInt(frequencyInput.value);
     const frequencyUnit = frequencyUnitSelect.value;
-    const automationTimeHours = parseInt(automationTimeHoursInput.value) || 0;
-    const automationTimeMinutes = parseInt(automationTimeMinutesInput.value) || 0;
-    const hourlyRate = parseFloat(hourlyRateInput.value);
-
+    
+    // Déterminer le temps d'automatisation en fonction de la complexité de la tâche
+    let automationTimeHours = 0;
+    let automationTimeMinutes = 0;
+    
+    if (taskComplexitySelect) {
+        const taskComplexity = taskComplexitySelect.value;
+        switch(taskComplexity) {
+            case 'simple':
+                automationTimeHours = 0;
+                automationTimeMinutes = 30;
+                break;
+            case 'medium':
+                automationTimeHours = 2;
+                automationTimeMinutes = 0;
+                break;
+            case 'complex':
+                automationTimeHours = 8;
+                automationTimeMinutes = 0;
+                break;
+            default:
+                automationTimeHours = parseInt(automationTimeHoursInput.value) || 0;
+                automationTimeMinutes = parseInt(automationTimeMinutesInput.value) || 0;
+        }
+    } else {
+        automationTimeHours = parseInt(automationTimeHoursInput.value) || 0;
+        automationTimeMinutes = parseInt(automationTimeMinutesInput.value) || 0;
+    }
+    
+    // Déterminer le taux horaire en fonction de la tranche de salaire
+    let hourlyRate = 0;
+    
+    if (salaryRangeSelect) {
+        hourlyRate = parseInt(salaryRangeSelect.value) || 25;
+    } else {
+        hourlyRate = parseFloat(hourlyRateInput.value) || 25;
+    }
+    
     // Convertir le temps de tâche en minutes
     const taskTimeInMinutes = taskTimeMinutes + (taskTimeSeconds / 60);
 
@@ -307,8 +387,11 @@ function calculateROI() {
 
     // Afficher la section des résultats
     document.getElementById('results').classList.remove('hidden');
-
-    // Créer ou mettre à jour le graphique
+    
+    // Faire défiler jusqu'à la section des résultats
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    
+    // Mettre à jour le graphique
     createOrUpdateChart(dailySavingsMinutes, automationTimeInMinutes);
 }
 
@@ -319,11 +402,15 @@ function createOrUpdateChart(dailySavingsMinutes, automationTimeInMinutes) {
     
     // Calculer les données pour le graphique
     const months = Array.from({length: 12}, (_, i) => i + 1);
+    
+    // Calculer le temps cumulé sans automatisation (toujours 0)
     const withoutAutomation = months.map(month => 0);
+    
+    // Calculer le coût initial de l'automatisation (négatif) et les économies cumulées
     const withAutomation = months.map(month => {
         const totalMinutesSaved = dailySavingsMinutes * 30 * month;
         const netMinutesSaved = totalMinutesSaved - automationTimeInMinutes;
-        return netMinutesSaved > 0 ? netMinutesSaved / 60 : 0; // Convertir en heures
+        return netMinutesSaved / 60; // Convertir en heures (peut être négatif au début)
     });
     
     // Trouver le point de rentabilité en mois
@@ -338,23 +425,25 @@ function createOrUpdateChart(dailySavingsMinutes, automationTimeInMinutes) {
     window.savingsChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: months.map(m => m.toString()),
+            labels: months.map(m => `${m} ${t.months}`),
             datasets: [
                 {
-                    label: t.withoutAutomation,
-                    data: withoutAutomation,
+                    label: t.initialInvestment,
+                    data: Array(12).fill(-automationTimeInMinutes / 60),
                     borderColor: '#e53e3e',
                     backgroundColor: 'rgba(229, 62, 62, 0.1)',
                     borderWidth: 2,
-                    fill: true
+                    borderDash: [5, 5],
+                    fill: false
                 },
                 {
-                    label: t.withAutomation,
+                    label: t.cumulativeSavings,
                     data: withAutomation,
                     borderColor: '#38a169',
                     backgroundColor: 'rgba(56, 161, 105, 0.1)',
-                    borderWidth: 2,
-                    fill: true
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.1 // Légère courbe pour un meilleur rendu visuel
                 }
             ]
         },
@@ -365,15 +454,23 @@ function createOrUpdateChart(dailySavingsMinutes, automationTimeInMinutes) {
                 x: {
                     title: {
                         display: true,
-                        text: t.months
+                        text: t.timeElapsed,
+                        font: {
+                            weight: 'bold'
+                        }
                     }
                 },
                 y: {
                     title: {
                         display: true,
-                        text: t.hoursUnit
+                        text: t.hoursSaved,
+                        font: {
+                            weight: 'bold'
+                        }
                     },
-                    beginAtZero: true
+                    beginAtZero: false,
+                    suggestedMin: -Math.max(automationTimeInMinutes / 60, 1), // S'assurer que le coût initial est visible
+                    suggestedMax: Math.max(...withAutomation, 1) * 1.1 // Ajouter un peu d'espace au-dessus
                 }
             },
             plugins: {
@@ -382,6 +479,13 @@ function createOrUpdateChart(dailySavingsMinutes, automationTimeInMinutes) {
                         label: function(context) {
                             return context.dataset.label + ': ' + context.raw.toFixed(1) + ' ' + t.hoursUnit;
                         }
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 15
                     }
                 }
             }
@@ -403,6 +507,8 @@ let frequencyUnitSelect;
 let automationTimeHoursInput;
 let automationTimeMinutesInput;
 let hourlyRateInput;
+let taskComplexitySelect;
+let salaryRangeSelect;
 let calculateBtn;
 let resetBtn;
 let resultDiv;
@@ -416,12 +522,13 @@ let shareButton;
 
 // Fonction pour réinitialiser le formulaire
 function resetForm() {
-    document.getElementById('calculatorForm').reset();
+    taskTimeMinutesInput.value = '';
+    taskTimeSecondsInput.value = '';
+    frequencyInput.value = '';
+    automationTimeHoursInput.value = '';
+    automationTimeMinutesInput.value = '';
+    hourlyRateInput.value = '';
     document.getElementById('results').classList.add('hidden');
-    if (window.savingsChart) {
-        window.savingsChart.destroy();
-        window.savingsChart = null;
-    }
 }
 
 // Fonction pour basculer entre les langues
@@ -494,6 +601,32 @@ function toggleDarkMode() {
     }
 }
 
+// Fonction pour mettre à jour le temps d'automatisation en fonction de la complexité de la tâche
+function updateAutomationTime() {
+    const taskComplexity = document.getElementById('taskComplexity').value;
+    const automationTimeHoursInput = document.getElementById('automationTimeHours');
+    const automationTimeMinutesInput = document.getElementById('automationTimeMinutes');
+    
+    // Définir le temps d'automatisation en fonction de la complexité
+    switch (taskComplexity) {
+        case 'simple':
+            automationTimeHoursInput.value = '0';
+            automationTimeMinutesInput.value = '30';
+            break;
+        case 'medium':
+            automationTimeHoursInput.value = '2';
+            automationTimeMinutesInput.value = '0';
+            break;
+        case 'complex':
+            automationTimeHoursInput.value = '8';
+            automationTimeMinutesInput.value = '0';
+            break;
+        default:
+            automationTimeHoursInput.value = '1';
+            automationTimeMinutesInput.value = '0';
+    }
+}
+
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
     // Récupérer les éléments du DOM
@@ -504,6 +637,8 @@ document.addEventListener('DOMContentLoaded', function() {
     automationTimeHoursInput = document.getElementById('automationTimeHours');
     automationTimeMinutesInput = document.getElementById('automationTimeMinutes');
     hourlyRateInput = document.getElementById('hourlyRate');
+    taskComplexitySelect = document.getElementById('taskComplexity');
+    salaryRangeSelect = document.getElementById('salaryRange');
     calculateBtn = document.getElementById('calculateBtn');
     resetBtn = document.getElementById('resetBtn');
     resultDiv = document.getElementById('results');
@@ -519,6 +654,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateBtn.addEventListener('click', calculateROI);
     resetBtn.addEventListener('click', resetForm);
     languageSwitch.addEventListener('change', toggleLanguage);
+    taskComplexitySelect.addEventListener('change', updateAutomationTime);
     
     // Ajouter les écouteurs d'événements pour les boutons de sauvegarde, chargement et partage
     if (saveButton) saveButton.addEventListener('click', saveCalculation);
@@ -533,6 +669,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Vérifier s'il y a des données partagées dans l'URL
     checkForSharedData();
+    
+    // Initialiser un graphique vide pour s'assurer que le canvas est correctement configuré
+    const ctx = document.getElementById('savingsChart').getContext('2d');
+    if (ctx) {
+        console.log("Canvas trouvé, initialisation du graphique vide");
+        window.savingsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: []
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    } else {
+        console.error("Canvas non trouvé");
+    }
 });
 
 // Fonction pour sauvegarder le calcul actuel
@@ -748,6 +903,80 @@ function checkForSharedData() {
             window.history.replaceState({}, document.title, window.location.pathname);
         } catch (error) {
             console.error('Erreur lors du chargement des données partagées:', error);
+        }
+    }
+}
+
+// Fonction pour mettre à jour les traductions
+function updateTranslations() {
+    const lang = document.getElementById('language-selector').value;
+    
+    // Mettre à jour tous les éléments avec l'attribut data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+    
+    // Mettre à jour les placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            element.placeholder = translations[lang][key];
+        }
+    });
+    
+    // Mettre à jour les options des sélecteurs
+    document.querySelectorAll('select[data-i18n-options]').forEach(select => {
+        const optionsKey = select.getAttribute('data-i18n-options');
+        if (translations[lang] && translations[lang][optionsKey]) {
+            const options = translations[lang][optionsKey];
+            const selectedValue = select.value;
+            
+            // Vider et recréer les options
+            select.innerHTML = '';
+            
+            for (const [value, text] of Object.entries(options)) {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = text;
+                select.appendChild(option);
+            }
+            
+            // Restaurer la valeur sélectionnée
+            select.value = selectedValue;
+        }
+    });
+    
+    // Mettre à jour le titre du graphique
+    if (myChart) {
+        myChart.options.plugins.title.text = translations[lang].chartTitle;
+        myChart.update();
+    }
+    
+    // Mettre à jour les étiquettes du graphique
+    if (myChart) {
+        myChart.data.datasets[0].label = translations[lang].initialInvestment;
+        myChart.data.datasets[1].label = translations[lang].cumulativeSavings;
+        myChart.update();
+    }
+    
+    // Mettre à jour les attributs de Cal.com
+    if (window.Cal && Cal.ns && Cal.ns["30min"]) {
+        try {
+            // Mettre à jour les paramètres de l'interface utilisateur
+            Cal.ns["30min"]("ui", {
+                "hideEventTypeDetails": false,
+                "layout": "month_view",
+                "styles": {
+                    "branding": {
+                        "brandColor": "#3182ce" // Couleur principale
+                    }
+                }
+            });
+        } catch (e) {
+            console.error("Erreur lors de la mise à jour de Cal.com:", e);
         }
     }
 }
